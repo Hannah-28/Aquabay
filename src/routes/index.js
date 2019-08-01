@@ -1,11 +1,10 @@
 import express from 'express';
-import IndexController from '../controllers/IndexController';
+import userRouter from './user';
+import adminRouter from './admin';
 
-const indexRouter = express.Router();
+const routes = express.Router();
 
-indexRouter.get(
-    '/',
-    IndexController.getHome
-)
+routes.use('/', userRouter);
+routes.use('/', adminRouter)
 
-export default indexRouter;
+export default routes;
