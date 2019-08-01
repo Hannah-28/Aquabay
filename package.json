@@ -4,7 +4,9 @@
   "description": "",
   "main": "index.js",
   "scripts": {
-    "test": "echo \"Error: no test specified\" && exit 1"
+    "test": "echo \"Error: no test specified\" && exit 1",
+    "start": "nodemon --exec babel-node src/server.js",
+    "build": "babel src --out-dir dist --copy-files"
   },
   "repository": {
     "type": "git",
@@ -16,5 +18,24 @@
   "bugs": {
     "url": "https://github.com/Hannah-28/Aquabay/issues"
   },
-  "homepage": "https://github.com/Hannah-28/Aquabay#readme"
+  "homepage": "https://github.com/Hannah-28/Aquabay#readme",
+  "dependencies": {
+    "bcryptjs": "^2.4.3",
+    "body-parser": "^1.19.0",
+    "dotenv": "^8.0.0",
+    "express": "^4.17.1",
+    "express-handlebars": "^3.1.0",
+    "joi": "^14.3.1",
+    "mongoose": "^5.6.7"
+  },
+  "devDependencies": {
+    "@babel/cli": "^7.5.5",
+    "@babel/core": "^7.5.5",
+    "@babel/node": "^7.5.5",
+    "@babel/preset-env": "^7.5.5",
+    "eslint": "^6.1.0",
+    "eslint-config-airbnb-base": "^13.2.0",
+    "eslint-plugin-import": "^2.18.2",
+    "nodemon": "^1.19.1"
+  }
 }
