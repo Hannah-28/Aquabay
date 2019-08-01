@@ -1,5 +1,6 @@
 import User from '../db/models/Users';
-import mongoose from 'mongoose'
+import mongoose from 'mongoose';
+import bcrypt from 'bcryptjs';
 
 /**
  * Class Users Controller
@@ -19,7 +20,7 @@ class UsersController {
     }
 
 
-    
+
     /**
      * Sign in route
      * @param {object} req request object for signIn function
@@ -37,22 +38,28 @@ class UsersController {
                     if(user) {
                         // the email exists
                         const hashedPassword  = user.password;
-                        /**
-                         * @Todo decrypt password and compare
-                         */
+                        bcrypt.compare(password, hashedPassword, (err, compareRes) => {
+                            // if comparision fails
+                            if(!compareRes) {
+                                res.render('error', {title:'Error', error: 'Your details are invalid'});
+                                return;
+                            }
 
-                        res.render('dashboard', {title: 'Dashboard'});
+                            // if comparision passes
+                            res.render('dashboard', {title: 'Dashboard'});
+
+                        })
                     } else {
                         //no user
-                        res.render('error', {error: 'There is no user with the given email address.'})
+                        res.render('error', {title:'Error', error: 'There is no user with the given email address.'})
                     }
                 } else {
-                    return res.render('error', {error: 'Could not find user'})
+                    return res.render('error', {title:'Error', error: 'Could not find user'})
                 }
             })
 
         } catch (err) {
-            res.render('error', {error: 'Invalid details'})
+            res.render('error', {title:'Error', error: 'Invalid details'})
         }
     }
 }
