@@ -3,9 +3,10 @@ import dotenv from 'dotenv';
 import path from 'path';
 import bodyParser from 'body-parser';
 import exphbs from 'express-handlebars';
+import db from './db/index';
 
 // import routes
-import indexRoute from './routes/index';
+import routes from './routes';
 
 dotenv.config();
 
@@ -29,6 +30,6 @@ app.use((req, res, next) => {
   next();
 });
 
-app.use('/', indexRoute);
+app.use('/', routes);
 
 export default app;
