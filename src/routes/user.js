@@ -19,4 +19,9 @@ userRouter.post(
     UsersController.createEntry
 )
 
+userRouter.get(
+    '/pH',
+    UsersController.getEntryBypH
+)
+
 export default userRouter;

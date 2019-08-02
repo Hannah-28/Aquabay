@@ -117,6 +117,43 @@ class UsersController {
             res.render('error', {title:'Invalid Entry', error: 'Invalid Entry'})
         }
     }
+
+    /**
+     * Get entry by pH
+     * @param {object} req request object for createEntry function
+     * @param {object} res response object for createEntry function
+     * @returns 
+     */
+    static async getEntryBypH(req, res){
+                try {
+            // find the user by email
+            const { pH } = req.body;
+
+            const valid = Validator.validatePH(pH);
+
+            if(!valid.error) {
+                Entry.find({ pH }, (err, entries) => {
+                    if(!err) {
+                        if(entries) {
+                            console.log(entries);
+                            res.render('dashboard', {title: 'All entries by pH', entries})
+                        } else {
+                            //no user
+                            res.render('error', {title:'Error', error: 'There is no user with the given email address.'})
+                        }
+                    } else {
+                        return res.render('error', {title:'Error', error: 'Could not find user'})
+                    }
+                })
+            } else {
+                // validation failed
+                res.render('error', {errors: valid.error.details.map(detail => detail.message), title: 'Invalid login details'});
+            }
+
+        } catch (err) {
+            res.render('error', {title:'Error', error: 'Invalid details'})
+        }
+    }
 }
 
 export default UsersController;

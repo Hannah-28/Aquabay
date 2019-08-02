@@ -22,4 +22,12 @@ Validator.createEntry = (pH, waterLevel) => {
     return Joi.validate({ pH, waterLevel }, schema, { abortEarly: false });  
 }
 
+Validator.validatePH = (pH) => {
+    const schema = Joi.object().keys({
+        pH: Joi.number(),
+    })
+    
+    return Joi.validate({ pH }, schema, { abortEarly: false });  
+}
+
 export default Validator;
