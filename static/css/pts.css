@@ -1,0 +1,198 @@
+* {
+    margin:0;
+    padding:0;
+}
+body {
+    width:100%;
+    height:100%
+}
+.top {
+    background-color: #2b2d2e;
+    display: grid;
+    grid-template-columns: 1fr 3fr;
+    height:10vh;
+}
+.logo {
+    margin-left:2em;
+    color:white;
+    align-self:center;
+    font-size: 1.5em;
+    font-family: cursive;
+    padding-bottom: 1.2em
+}
+.menu1 {
+    display: flex;
+    justify-content: space-around
+}
+.menu1 li {
+    display: inline-block;
+    align-self: center
+}
+.menu1 li a {
+    text-decoration: none;
+    color:white;
+    font-size: 1.7em;
+    font-family:  'Trebuchet MS'
+}
+.menu1 li a::before{
+    content:'';
+    display:block;
+    background: #66cc00;
+    height :4px;
+    width:0%;
+    top:0px;
+    transition:all 1s;
+    color: white
+  }
+.menu1 li a:hover::before{
+    width:100%;
+}
+.body {
+    background-color:#f2f2f2;
+    height: 90vh;
+    padding:1em
+}
+.container1 {
+    background-color: white;
+   
+}
+.container1Head {
+    display: flex;
+    justify-content: space-between;
+    padding:0.8em
+}
+.container1HeadLeft{
+    display: flex;
+}
+option {
+    background-color:white
+}
+.go, .create {
+    text-align:center;
+    padding:0.3em 1.3em;
+    border: none; 
+    color:white;
+    font-size: 1.1em;
+    background-color: cornflowerblue;
+    text-decoration: none;
+    font-weight: bold
+}
+.go:hover, .create:hover {
+    text-decoration: none;
+    color:white;
+    background-color: rgb(63, 110, 196);
+    cursor: pointer;
+}
+.reset {
+    text-align:center;
+    padding:0.3em 1.3em;
+    border: 1px solid beige; 
+    color:black;
+    font-size: 1.1em;
+    background-color: #f2f2f2;
+    text-decoration: none;
+    font-weight: bold
+}
+.reset:hover {
+    background-color: white;
+    cursor: pointer;
+}
+@media screen and (max-width: 799px) and (min-width:585px) {
+    .logo {
+        margin-left:1em;
+        font-size: 0.8em;
+        padding-bottom: 1.7em
+    }
+    .menu1 {
+        justify-content: space-evenly
+    }
+    .menu1 li a {
+        font-size: 1.3em;
+    }
+    .menu1 li a:hover::before{
+        width:100%;
+    }
+    
+}
+
+@media screen and (max-width: 899px) and (min-width:585px) {
+    .container1Head{
+        display:grid;
+        grid-template-columns: 1fr
+    }
+    .container1Head{
+        text-align: center 
+    }
+    .container1HeadLeft{
+        margin:auto
+    }
+    .container1HeadCenter {
+        margin:2em 0em
+    }
+    .container1HeadCenter button {
+        width:90vw;
+
+    }
+    .reset,.create{
+        width:44.7vw
+    }
+}
+@media screen and (max-width:584px) {
+    .top {
+        background-color: #2b2d2e;
+        display: grid;
+        grid-template-columns: 1fr 3fr;
+        height:10vh;
+    }
+    .logo h1 {
+        margin-left:0.3em;
+        margin-top:-0.3em;
+        font-size: 1em
+        /* padding-bottom: 1em */
+    }
+    .logo {
+        margin-left:0em;
+        padding-bottom: 0em
+    }
+    .menu1 li a {
+        font-size: 0.8em
+    }
+    .container1Head{
+        display:grid;
+        grid-template-columns: 1fr
+    }
+    .container1Head{
+        text-align: center 
+    }
+    .container1HeadLeft{
+        margin:auto;
+        width:40em
+    }
+    .container1HeadCenter {
+        margin:2em 0em
+    }
+    .container1HeadCenter button {
+        width:70vw;
+    }
+    .go, .create {
+        padding:0.3em 0.8em;
+        color:white;
+        font-size: 0.8em;
+    }
+    .reset,.create{
+        width:70vw
+    }
+    .reset{
+        margin-bottom:2em;
+        font-size: 0.8em
+    }
+    .container1HeadLeft {
+        width:15em
+    }
+    .container1HeadCenter {
+        width: 100%
+    }
+    #search {
+        width:10em
+    }
+} 
