@@ -165,7 +165,8 @@ option {
         text-align: center 
     }
     .container1HeadLeft{
-        margin:auto
+        margin:auto;
+        width:40em
     }
     .container1HeadCenter {
         margin:2em 0em
@@ -176,18 +177,22 @@ option {
     .go, .create {
         padding:0.3em 0.8em;
         color:white;
-        font-size: 1em;
+        font-size: 0.8em;
     }
     .reset,.create{
         width:70vw
     }
     .reset{
-        margin-bottom:2em
+        margin-bottom:2em;
+        font-size: 0.8em
     }
     .container1HeadLeft {
         width:15em
     }
     .container1HeadCenter {
         width: 100%
+    }
+    #search {
+        width:10em
     }
 } 
