@@ -1,5 +1,6 @@
 import User from '../db/models/Users';
-import mongoose from 'mongoose'
+import mongoose from 'mongoose';
+import bcrypt from 'bcryptjs';
 
 /**
  * Class Admin Controller
@@ -21,30 +22,31 @@ class AdminController {
             // make sure user does not already exist
             User.findOne({ email }, (err, user) => {
                 if(err) {
-                    res.render('error', {error: 'Could not find user'})
+                    res.render('error', {title:'Error', error: 'Could not find user'})
                     return;
                 }
                 if(!user) {
                     //register the user
-                    const user = new User({
-                        _id: mongoose.Types.ObjectId(),
-                        email,
-                        password
-                    });
-
-                    user.save()
-                    .then(result => {
-                        res.status(200).json({
-                            docs:[user]
-                        });
-                    })
-                    .catch(err => {
-                        console.log(err);
-                    });
+                    // hash the password
+                    bcrypt
+                        .hash(password, 10, (err, hash) => {
+                            const user = new User({
+                                _id: mongoose.Types.ObjectId(),
+                                email,
+                                password: hash
+                            });
+                            user.save()
+                            .then(result => {
+                                res.render('dashboard', {title: 'Welcome to the Dashboard'})
+                            })
+                            .catch(err => {
+                                console.log(err);
+                            });
+                        })
                 } else {
 
                     //send an error, the user already exists
-                    res.render('error', {error: 'User already exist'})
+                    res.render('error', {title:'Error', error: 'User already exist'})
                 }
             })
 
