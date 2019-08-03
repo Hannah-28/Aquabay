@@ -67,6 +67,7 @@ header {
     padding:0em 4em;
     display: grid;
     grid-template-columns: 2fr 2fr;
+    grid-gap: 20px;
     align-items:flex-end;
     justify-content: center
 }
@@ -111,27 +112,35 @@ input{
 
 @media screen and (max-width: 799px) {
     .logo {
-        margin-left:1em;
-        font-size: 0.8em;
+        margin-left:0.6em;
+        font-size: 0.7em;
     }
     .menu {
         justify-content: space-evenly
     }
     .menu li a {
-        font-size: 1em;
+        font-size: 0.8em;
     }
     .menu li a:hover::before{
         width:100%;
     }
     .container{
         grid-template-columns: 1fr;
+        margin-top:3em;
+    }
+    .head img {
+        width:3em;
+        height:3em
     }
     .head h5{
-        margin-bottom: 2em;
-    
+        margin-bottom: 1em;
+        font-size: 1em
     }
     .form{
         padding:0.5em;
-        font-size:0.8em;
+        font-size:0.7em;
+    }
+    input{
+        margin-bottom:1em;
     }
 }
