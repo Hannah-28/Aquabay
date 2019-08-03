@@ -7,9 +7,38 @@ const EntrySchema = new Schema({
     pH: {
         type: String,
     },
-    waterLevel: {
+
+    total_dissolved: {
         type: String,
     },
+    waterHardness: {
+        type: String,
+    },
+    conductivity: {
+        type: String,
+    },
+    totalPetHyd: {
+        type: String,
+    },
+    benzene_mg: {
+        type: String,
+    },
+    toluene_mg: {
+        type: String,
+    },
+    ethlybenzene_mg: {
+        type: String,
+    },
+    xylene_mg: {
+        type: String,
+    },
+    cadmium_mg: {
+        type: String,
+    },
+    zinc_mg: {
+        type: String,
+    },
+
     created: {
         type: Date,
         default: Date.now

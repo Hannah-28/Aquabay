@@ -2,7 +2,7 @@ import Joi from 'joi';
 
 const Validator = {};
 
-Validator.signin = (email, password) => {
+Validator.signIn = (email, password) => {
     const schema = Joi.object().keys({
         email: Joi.string().regex(/^([a-zA-Z0-9_\.\-])+\@(([a-zA-Z0-9\-])+\.)+([a-zA-Z0-9]{2,4})+$/).required(),
         password: Joi.string().regex(/^[a-zA-Z0-9]{3,30}$/).required(),

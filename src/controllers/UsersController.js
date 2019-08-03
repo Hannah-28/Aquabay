@@ -30,13 +30,13 @@ class UsersController {
      * @param {object} res response object for signIn function
      * @returns 
      */
-    static async singIn(req, res, next) {
+    static async signIn(req, res, next) {
         // get the user details
         try {
             // find the user by email
             const { email, password } = req.body;
 
-            const valid = Validator.singIn(email, password);
+            const valid = Validator.signIn(email, password);
 
             if(!valid.error) {
                 User.findOne({ email }, (err, user) => {
@@ -59,24 +59,25 @@ class UsersController {
                                 }, process.env.JWT_KEY, { expiresIn: process.env.JWT_EXPIRES})
     
                                 res.header('Authorization', 'Bearer '+ token);
-                                res.render('dashboard', {title: 'Dashboard'});
+                                res.render('users/dashboard', {title: 'Dashboard'});
     
                             })
                         } else {
                             //no user
-                            res.render('error', {title:'Error', error: 'There is no user with the given email address.'})
+                            res.render('index', {title:'There is no user with the given email address.', error: 'There is no user with the given email address.'})
                         }
                     } else {
-                        return res.render('error', {title:'Error', error: 'Could not find user'})
+                        return res.render('index', {title:'Could not find user', error: 'Could not find user'})
                     }
                 })
             } else {
                 // validation failed
-                res.render('error', {errors: valid.error.details.map(detail => detail.message), title: 'Invalid login details'});
+                res.render('index', {errors: valid.error.details.map(detail => detail.message), title: 'Invalid login details'});
             }
 
         } catch (err) {
-            res.render('error', {title:'Error', error: 'Invalid details'})
+            console.log(err)
+            res.render('index', {title:'Error', error: 'Invalid details'})
         }
     }
 
@@ -151,7 +152,7 @@ class UsersController {
             }
 
         } catch (err) {
-            res.render('error', {title:'Error', error: 'Invalid details'})
+            res.render('error', {title:'Invalid details', error: 'Invalid details'})
         }
     }
 }

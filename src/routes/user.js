@@ -6,7 +6,7 @@ const userRouter = express.Router();
 
 userRouter.post(
     '/signin',
-    UsersController.singIn
+    UsersController.signIn
 )
 
 userRouter.get(
